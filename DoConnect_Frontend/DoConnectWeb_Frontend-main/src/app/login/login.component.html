@@ -1,0 +1,63 @@
+<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Fetching...">
+  <div class="parent" style="">
+    <div class="child">
+      <div nz-row class="imgDiv">
+        
+      </div>
+      <form
+        nz-form
+        [formGroup]="validateForm"
+        class="login-form"
+        (ngSubmit)="submitForm()"
+      >
+        <div class="do1">
+          <h1>DoConnect</h1>
+        </div>
+
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please enter your email!">
+            <nz-input-group >
+              <input
+                type="text"
+                nz-input
+                formControlName="userName"
+                
+              />
+              <label class="form-label" for="loginName">Username</label>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please enter your Password!">
+            <nz-input-group >
+              <input
+                type="password"
+                nz-input
+                formControlName="password"
+               
+              />
+              <label class="form-label" for="loginName">Password</label>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please enter your Role!">
+            <nz-select formControlName="role" nzPlaceHolder="Login As">
+              <nz-option nzValue="1" nzLabel="I am Admin"></nz-option>
+              <nz-option nzValue="2" nzLabel="I am User"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+
+        <button
+          nz-button
+          class="login-form-button login-form-margin"
+          [nzType]="'primary'"
+        >
+          Log in
+        </button>
+        Don't have an account? <a routerLink="/register"> Register now! </a>
+      </form>
+    </div>
+  </div>
+</nz-spin>

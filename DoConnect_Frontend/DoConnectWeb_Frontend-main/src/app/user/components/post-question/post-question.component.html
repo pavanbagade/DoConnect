@@ -1,0 +1,35 @@
+<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Fetching...">
+    <div class="parent" style="">
+        <div class="child">
+            <div nz-row class="imgDiv">
+                <h2>Post Question</h2>
+            </div>
+
+            <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                <div nz-row>
+                    <div nz-col nzSpan="24">
+                        <nz-form-item>
+                            <nz-form-control nzHasFeedback [nzXs]="24"
+                                nzErrorTip="This Input Is Required!">
+                                <input nz-input placeholder="Title" formControlName="title"  />
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                    <div nz-col nzSpan="24">
+                        <nz-form-item>
+                            <nz-form-control nzHasFeedback  [nzXs]="24"
+                                nzErrorTip="This Input Is Required!">
+    
+                                <textarea rows="6" nz-input placeholder="Body" formControlName="body" ></textarea>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </div>
+                </div>
+               
+
+
+                <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Post Question</button>
+            </form>
+        </div>
+    </div>
+</nz-spin>

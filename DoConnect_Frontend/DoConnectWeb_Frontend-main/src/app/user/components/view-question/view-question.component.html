@@ -1,0 +1,85 @@
+<nz-spin [nzSpinning]="isSpinningQuestion" [nzSize]="'large'" nzTip="Working...">
+<div class="parent" *ngIf="question" style="background-color: #F8F8F8;">
+    <div class="child">
+        <h2>{{question.title}}</h2>
+        <p>Asked On : <b>{{question.createdDate | date: 'EEEE, MMMM d, y'}}</b> by <b>{{question.userName}}</b>
+        </p>
+        <div nz-row>
+            
+            <div nz-col nzSpan="24">
+                <p>{{question.body}}</p>
+                <nz-tag *ngFor="let tag of question.tags" [nzColor]="'#108ee9'">{{tag}}</nz-tag>
+            </div>
+        </div>
+    </div>
+
+    <div class="answer" *ngFor="let answer of answers; let i = index;">
+        <div nz-row>
+            
+            <div nz-col nzSpan="24">
+                <h5><b>{{answer.userName}}</b> answered On <b>{{answer.createdDate | date:'MMM d, y, h:mm:ss a'}}</b>
+                </h5>
+                <p style="white-space: pre-wrap;">{{answer.body}}</p>
+                <div class="testImg" *ngIf="answer.convertedImg">
+                    <img style=" border-radius: 15px;" width="100%" [src]="answer.convertedImg" />
+                </div>
+
+                <div *ngFor="let comment of  answer.commentDtoList">
+                    <hr>
+                    <h5 class="comment">{{comment.body}} <span class="commentDate">
+                            <nz-divider class="commentDate" nzType="vertical"></nz-divider> {{comment.userName}} -
+                            {{comment.createdDate | date:'MMM d, y, h:mm:ss a'}}
+                        </span></h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+        <div class="parent" *ngIf="!question.userAnswered">
+            <div class="child">
+                <div nz-row class="imgDiv">
+                    <h2>Post Answer</h2>
+                </div>
+
+                <form nz-form [formGroup]="validateForm" (ngSubmit)="addAnswer()">
+                    <div nz-row>
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+
+                                    <textarea rows="10" nz-input placeholder="Solution ...."
+                                        formControlName="body"></textarea>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+                    <div nz-row>
+                        <div>
+                            <input nz-col nzSpan="24" id="file" type="file" class="form-control"
+                                accept="image/png, image/jpeg" (change)="onFileChange($event)">
+                            <div style="padding: 20px;">
+                                <img class="preview" *ngFor='let url of images' [src]="url" height="150"
+                                    style="margin: 3px;">
+                            </div> <br />
+                            <!-- <nz-form-item>
+                                <nz-form-control nzHasFeedback  [nzXs]="24"
+                                nzErrorTip="This Input Is Required!">
+                                    <input type="text" class="form-control" id="name" placeholder="image name" 
+                                name="name" />
+                                </nz-form-control>
+                                </nz-form-item> -->
+                        </div>
+                    </div>
+
+
+
+                    <button nz-button style="float: right;" class="login-form-button login-form-margin"
+                        [nzType]="'primary'">Post Your Answer</button>
+                </form>
+            </div>
+        </div>
+    </nz-spin>
+</div>
+</nz-spin>

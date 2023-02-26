@@ -1,0 +1,84 @@
+.parent{
+    width: 100%;
+   min-height: 91vh;
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .child{
+    padding: 50px;
+    width: 880px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(255, 255, 255, 0.792);
+    box-shadow: 1px 1px 15px -7px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-bottom: 22px;
+    
+  }
+
+  .answer{
+    padding: 50px;
+    width: 880px;
+    background-color: rgb(241, 235, 235);
+    margin-left: auto;
+    margin-right: auto;
+    // background: #f4eeee;
+    box-shadow: 1px 1px 15px -7px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-bottom: 22px;
+    padding-bottom: 10px;
+  }
+
+.center{
+    margin-left: 4px;
+    margin-top: 8px;
+   font-size: 26px;
+   font-weight: bold;
+    margin-bottom: -4px;
+}
+
+  i{
+      font-size: 34px;
+      cursor: pointer;
+  }
+
+  .up:hover{
+      color: rgb(11, 211, 81);
+  }
+
+  .down:hover{
+    color: red;
+}
+
+  .upVoted{
+      color: rgb(11, 211, 81);
+  }
+
+  .downVoted{
+    color: red;
+}
+
+.preview{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  
+}
+
+.testImg{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.comment{
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: 500;
+}
+
+.commentDate{
+  // color: #F7F9FA;
+  color: lightblue;
+}

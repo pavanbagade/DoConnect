@@ -1,0 +1,59 @@
+<div>
+  <nz-spin [nzSpinning]="isSpinningQuestion" [nzSize]="'large'" nzTip="Fetching...">
+    <nz-tabset style="padding: 20px;" (nzSelectChange)="tabChanged($event)">
+        <nz-tab nzTitle="Questions">
+            <nz-table #basicTable [nzData]="questions" [nzShowPagination]="false">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Posted By</th>
+                    <th>Description</th>
+                    <th>Posted Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of basicTable.data">
+                    <td>{{data.title}}</td>
+                    <td>{{data.userName}}</td>
+                    <td >{{data.body}}</td>
+                    <td>{{data.createdDate | date: 'EEEE, MMMM d, y'}}</td>
+                    <td>
+                        <a (click)="approveQuestion(data.id)">Approve</a>
+                      <nz-divider nzType="vertical"></nz-divider>
+                      <a (click)="deleteQuestion(data.id)">Delete</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </nz-table>
+        </nz-tab>
+        <nz-tab nzTitle="Answers">
+          <nz-table #basicTableAnswer [nzData]="answers" [nzShowPagination]="false">
+            <thead>
+              <tr>
+                <th>Img</th>
+                <th>Answered By</th>
+                <th>Description</th>
+                <th>Posted on</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of basicTableAnswer.data">
+                <td> <img *ngIf="data.returnedImg" width="200px" alt="example" [src]="processImg(data.returnedImg)" /></td>
+                <td>{{data.userName}}</td>
+                <td >{{data.body}}</td>
+                <td>{{data.createdDate | date: 'EEEE, MMMM d, y'}}</td>
+                <td>
+                    <a (click)="approveAnswer(data.id)">Approve</a>
+                  <nz-divider nzType="vertical"></nz-divider>
+                  <a (click)="deleteAnswer(data.id)">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </nz-tab>
+       
+      </nz-tabset>
+    </nz-spin>
+</div>
